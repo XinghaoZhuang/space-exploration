@@ -71,3 +71,72 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+## Develop locally
+For local development, you could put your mongo_url in .env file. And putting .env into .gitignore is a better way.
+```bash
+# .env
+MONGO_URL = 'mongodb://localhost:27017/test'
+```
+
+## Run with docker
+Build docker image with Dockerfile. We name the example image as 'space', which is used in the docker-compose file. In the docker-compose file, you should keep your MONGO_URL secret.
+```bash
+# build image
+docker build . -t space
+
+# docker compose
+docker-compose up -d
+```
+
+## API doc
+See [swagger](http://localhost:3000/api). It shows data schema and API details.
+
+## Unit-Test
+```bash
+yarn run test:cov
+```
+---------------------------------|---------|----------|---------|---------|-------------------
+File                             | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+---------------------------------|---------|----------|---------|---------|-------------------
+All files                        |   85.23 |      100 |   97.82 |   86.56 |                   
+ src                             |   39.39 |      100 |      75 |   33.33 |                   
+  app.controller.ts              |     100 |      100 |     100 |     100 |                   
+  app.module.ts                  |       0 |      100 |     100 |       0 | 1-15              
+  app.service.ts                 |     100 |      100 |     100 |     100 |                   
+  main.ts                        |       0 |      100 |       0 |       0 | 1-19              
+ src/celestial-bodies            |   87.09 |      100 |     100 |   89.28 |                   
+  celestial-bodies.controller.ts |     100 |      100 |     100 |     100 |                   
+  celestial-bodies.module.ts     |       0 |      100 |     100 |       0 | 1-12              
+  celestial-bodies.service.ts    |     100 |      100 |     100 |     100 |                   
+  constants.ts                   |     100 |      100 |     100 |     100 |                   
+ src/celestial-bodies/dto        |     100 |      100 |     100 |     100 |                   
+  create-celestial-body.dto.ts   |     100 |      100 |     100 |     100 |                   
+  update-celestial-body.dto.ts   |     100 |      100 |     100 |     100 |                   
+ src/celestial-bodies/schemas    |     100 |      100 |     100 |     100 |                   
+  celestial-body.schema.ts       |     100 |      100 |     100 |     100 |                   
+ src/missions                    |    87.5 |      100 |     100 |   89.65 |                   
+  constants.ts                   |     100 |      100 |     100 |     100 |                   
+  missions.controller.ts         |     100 |      100 |     100 |     100 |                   
+  missions.module.ts             |       0 |      100 |     100 |       0 | 1-12              
+  missions.service.ts            |     100 |      100 |     100 |     100 |                   
+ src/missions/dto                |     100 |      100 |     100 |     100 |                   
+  create-mission.dto.ts          |     100 |      100 |     100 |     100 |                   
+  update-mission.dto.ts          |     100 |      100 |     100 |     100 |                   
+ src/missions/schemas            |     100 |      100 |     100 |     100 |                   
+  mission.schema.ts              |     100 |      100 |     100 |     100 |                   
+ src/spacecrafts                 |    87.5 |      100 |     100 |   89.65 |                   
+  constants.ts                   |     100 |      100 |     100 |     100 |                   
+  spacecrafts.controller.ts      |     100 |      100 |     100 |     100 |                   
+  spacecrafts.module.ts          |       0 |      100 |     100 |       0 | 1-12              
+  spacecrafts.service.ts         |     100 |      100 |     100 |     100 |                   
+ src/spacecrafts/dto             |     100 |      100 |     100 |     100 |                   
+  create-spacecraft.dto.ts       |     100 |      100 |     100 |     100 |                   
+  update-spacecraft.dto.ts       |     100 |      100 |     100 |     100 |                   
+ src/spacecrafts/schemas         |     100 |      100 |     100 |     100 |                   
+  spacecraft.schema.ts           |     100 |      100 |     100 |     100 |                   
+---------------------------------|---------|----------|---------|---------|-------------------
+
+Test Suites: 7 passed, 7 total
+Tests:       49 passed, 49 total
+Snapshots:   0 total
